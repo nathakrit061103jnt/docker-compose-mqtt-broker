@@ -39,7 +39,7 @@
 
 ===========&&=========
 
-## Docker-compose file
+## Docker-compose file && docker-compose.yml
 
     version: "3"
         services:
