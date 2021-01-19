@@ -36,3 +36,39 @@
     1. sudo git clone https://github.com/nathakrit061103jnt/docker-compose-mqtt-broker.git docker-compose-mqtt-broker
     2. cd docker-compose-mqtt-broker
     3. sudo docker-compose up -d
+
+===========&&=========
+
+## Docker-compose file
+
+    version: "3"
+        services:
+            broker:
+            image: eclipse-mosquitto
+            volumes: - mosquitto:/mosquitto
+            networks: - mqtt-network
+            ports: - "1883:1883"
+
+            node-red:
+            depends_on: - broker
+            image: nodered/node-red:latest
+            environment: - TZ=Europe/Amsterdam
+            volumes: - node-red-data:/data
+            user: "0"
+            networks: - mqtt-network
+            ports: - "1880:1880"
+
+            portainer:
+            image: portainer/portainer
+            command: -H unix:///var/run/docker.sock
+            restart: always
+            ports: - 9000:9000
+            volumes: - /var/run/docker.sock:/var/run/docker.sock - portainer_data:/data
+
+            networks:
+            mqtt-network:
+
+            volumes:
+            portainer_data:
+            mosquitto:
+            node-red-data:
