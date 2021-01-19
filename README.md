@@ -36,3 +36,9 @@
     1. sudo git clone https://github.com/nathakrit061103jnt/docker-compose-mqtt-broker.git docker-compose-mqtt-broker
     2. cd docker-compose-mqtt-broker
     3. sudo docker-compose up -d
+
+## Node-Red Port 1880
+
+## Mqtt Broker eclipse-mosquitto Port 1883
+
+## portainer Port 9000
